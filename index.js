@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 });
 
 // Adds support for GET requests to our webhook
-app.get('/webhook', (req, res) => {
+app.get('/webhook', function(req, res){
 
     // Your verify token. Should be a random string.
     let VERIFY_TOKEN = 'token';
@@ -41,7 +41,7 @@ app.get('/webhook', (req, res) => {
 });
 
 // Creates the endpoint for our webhook
-app.post('/webhook', (req, res) => {
+app.post('/webhook', function(req, res){
 
     let body = req.body;
 return res.json(req.body)
