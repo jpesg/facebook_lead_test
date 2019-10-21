@@ -22,7 +22,7 @@ app.get('/webhook', function(req, res){
     // Your verify token. Should be a random string.
     let VERIFY_TOKEN = 'token';
 
-    // Parse the query params
+    // Parse the query params   
     let token = req.query['hub.verify_token'];
     let challenge = req.query['hub.challenge'];
 
@@ -43,8 +43,28 @@ app.get('/webhook', function(req, res){
 });
 
 // Creates the endpoint for our webhook
-app.post('/webhook', function(req, res){    
-    return res.json(req.body); 
+app.post('/webhook', function(req, res){
+
+    let body = req.body;
+
+    // Checks this is an event from a page subscription
+    if (body.object === 'page') {
+
+        // Iterates over each entry - there may be multiple if batched
+       body.entry.forEach(function(entry) {
+
+            // Gets the message. entry.messaging is an array, but
+            // will only ever contain one message, so we get index 0
+            let webhook_event = entry.messaging[0];
+            console.log(webhook_event);
+        });
+
+        // Returns a '200 OK' response to all requests
+        res.status(200).send('EVENT_RECEIVED');
+    } else {
+        // Returns a '404 Not Found' if event is not from a page subscription
+        res.sendStatus(404);
+    }
 
 });
 
