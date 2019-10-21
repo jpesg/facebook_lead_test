@@ -2,11 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+
 const app = express();
 
 app.use(bodyParser.json());
 
 app.use(cors());
+
+
+const PORT = process.env.PORT || 5000
 
 app.get('/', (req, res) => {
     res.send('health');
@@ -28,7 +32,7 @@ app.get('/webhook', function(req, res){
 
         // Checks the mode and token sent is correct
         if (mode === 'subscribe' && token === VERIFY_TOKEN) {
-            console.log("--->");
+
             // Responds with the challenge token from the request
             console.log('WEBHOOK_VERIFIED');
             res.status(200).send(challenge);
@@ -66,6 +70,6 @@ app.post('/webhook', function(req, res){
 
 });
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
     console.log('listening on port 5000');
 });
