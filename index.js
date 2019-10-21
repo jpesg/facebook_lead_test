@@ -28,13 +28,13 @@ app.get(['/facebook', '/instagram'], function(req, res) {
         res.sendStatus(400);
     }
 });
-
+/*
 app.post('/webhook', function(req, res) {
 
     var body = req.body;
 
     // Checks this is an event from a page subscription
-    if (body.object === 'page') {
+    if (body.object == 'page') {
 
         // Iterates over each entry - there may be multiple if batched
         body.entry.forEach(function(entry) {
@@ -53,12 +53,12 @@ app.post('/webhook', function(req, res) {
     }
 
 });
-
+*/
 // Adds support for GET requests to our webhook
 app.get('/webhook', function(req, res) {
 
     // Your verify token. Should be a random string.
-    var VERIFY_TOKEN = "<YOUR_VERIFY_TOKEN>"
+    var VERIFY_TOKEN = "token"
 
     // Parse the query params
     var mode = req.query['hub.mode'];
@@ -69,7 +69,7 @@ app.get('/webhook', function(req, res) {
     if (mode && token) {
 
         // Checks the mode and token sent is correct
-        if (mode === 'subscribe' && token === VERIFY_TOKEN) {
+        if (mode == 'subscribe' && token == VERIFY_TOKEN) {
 
             // Responds with the challenge token from the request
             console.log('WEBHOOK_VERIFIED');
