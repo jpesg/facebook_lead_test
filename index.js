@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 
 
-app.get('/', (req, res) => {
+app.get('/', function(req, res){
     res.send('health');
 });
 
