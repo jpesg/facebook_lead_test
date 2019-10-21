@@ -43,7 +43,7 @@ app.get('/', function(req, res){
 app.post('/', function(req, res){
 
     let body = req.body;
-    console.log(JSON.stringyfy(req.body, null, 2));
+    console.log(JSON.stringify(req.body, null, 2));
     // Checks this is an event from a page subscription
     if (body.object === 'page') {
 
