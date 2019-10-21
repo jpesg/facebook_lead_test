@@ -28,7 +28,7 @@ app.get('/webhook', function(req, res){
 
         // Checks the mode and token sent is correct
         if (mode === 'subscribe' && token === VERIFY_TOKEN) {
-
+            console.log("--->");
             // Responds with the challenge token from the request
             console.log('WEBHOOK_VERIFIED');
             res.status(200).send(challenge);
