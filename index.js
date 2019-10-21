@@ -12,12 +12,9 @@ app.use(cors());
 
 const PORT = process.env.PORT || 5000
 
-app.get('/', (req, res) => {
-    res.send('health');
-});
 
 // Adds support for GET requests to our webhook
-app.get('/webhook', function(req, res){
+app.get('/', function(req, res){
 
     // Your verify token. Should be a random string.
     let VERIFY_TOKEN = 'token';
@@ -43,7 +40,7 @@ app.get('/webhook', function(req, res){
 });
 
 // Creates the endpoint for our webhook
-app.post('/webhook', function(req, res){
+app.post('/', function(req, res){
 
     let body = req.body;
 
