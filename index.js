@@ -19,12 +19,12 @@ app.get('/', function(req, res){
     // Your verify token. Should be a random string.
     let VERIFY_TOKEN = 'token';
 
-    // Parse the query params   
+    // Parse the query params
     let token = req.query['hub.verify_token'];
     let challenge = req.query['hub.challenge'];
 
     // Checks if a token and mode is in the query string of the request
-    if (mode && token) {
+    if (token) {
 
         // Checks the mode and token sent is correct
         if (token === VERIFY_TOKEN) {
@@ -48,7 +48,7 @@ app.post('/', function(req, res){
     if (body.object === 'page') {
 
         // Iterates over each entry - there may be multiple if batched
-       body.entry.forEach(function(entry) {
+        body.entry.forEach(function(entry) {
 
             // Gets the message. entry.messaging is an array, but
             // will only ever contain one message, so we get index 0
