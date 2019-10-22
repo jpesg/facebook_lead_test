@@ -44,7 +44,7 @@ app.post('/', function(req, res){
 
     let body = req.body;
     console.log(JSON.stringify(req.body, null, 2));
-      res.status(200).send('EVENT_RECEIVED');
+    return res.status(200).send('EVENT_RECEIVED');
     // Checks this is an event from a page subscription
     if (body.object === 'page') {
 
